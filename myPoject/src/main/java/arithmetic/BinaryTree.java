@@ -20,11 +20,9 @@ public class BinaryTree {
     /**
      * 关键字
      */
-    private int keyData;
+    private Comparable keyData;
 
-    private BinaryTree(int keyData) {
-        this.leftTree = null;
-        this.rightTree = null;
+    private BinaryTree(Comparable keyData) {
         this.keyData = keyData;
     }
 
@@ -33,9 +31,9 @@ public class BinaryTree {
      * @param root 根节点
      * @param data 关键字
      */
-    private void insert(BinaryTree root, int data) {
+    private void insert(BinaryTree root, Comparable data) {
         // 如果将要插入的关键字大于根节点的关键字
-        if(data > root.keyData) {
+        if(data.compareTo(root.keyData) > 0) {
             if(root.rightTree == null) {
                 root.rightTree = new BinaryTree(data);
             } else {
@@ -90,7 +88,7 @@ public class BinaryTree {
     }
 
     public static void main(String[] args) {
-        int[] array = {35, 17, 39, 9, 28, 65, 56, 87};
+        String[] array = {"B", "A", "D","C", "Z"};
         // 创建根节点
         BinaryTree root = new BinaryTree(array[0]);
         for(int i = 1; i < array.length; i++) {
@@ -105,4 +103,5 @@ public class BinaryTree {
         System.out.println("\n后序遍历：");
         BinaryTree.postOrder(root);
     }
+
 }
